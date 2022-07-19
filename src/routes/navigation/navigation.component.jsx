@@ -1,20 +1,24 @@
 import { Fragment } from "react";
 import { Outlet, Link } from "react-router-dom";
+import { ReactComponent as LazyKitchenLogo } from "../../assets/lazy_kitchen_logo.svg";
+import "./navigation.styles.scss";
 
 const Navigation = () => {
   return (
     <Fragment>
       <div className="navigation">
         <Link className="logo-container" to="/">
-          <div>logo</div>
+          <LazyKitchenLogo className="logo" />
         </Link>
 
         <div className="nav-links-container">
           <Link className="nav-link" to="/shop">
             SHOP
           </Link>
+          <Link className="nav-link" to="/sign-in">
+            SIGN IN
+          </Link>
         </div>
-        <h1>I am the navigation bar</h1>
       </div>
       <Outlet />
     </Fragment>
