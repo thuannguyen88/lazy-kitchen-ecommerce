@@ -1,9 +1,9 @@
-import { signInWithGoogleRedirect } from "../../utils/firebase/firebase.utils";
+import { signInWithGooglePopUp } from "../../utils/firebase/firebase.utils";
 
 const SignIn = () => {
   //all calls to database are async
   const logGoogleUser = async () => {
-    const response = await signInWithGoogleRedirect();
+    const response = await signInWithGooglePopUp();
     console.log(response);
     //  const userDocRef = await createUserDocumentFromAuth(user);
   };

@@ -1,8 +1,8 @@
 import {
   getAuth,
-    signInWithPopup,
+  signInWithPopup,
   GoogleAuthProvider,
-//   signInWithRedirect,
+  //   signInWithRedirect,
 } from "firebase/auth";
 
 // import { getFirestore, doc, getDoc, setDoc } from "firebase/firestore";
@@ -38,8 +38,7 @@ provider.setCustomParameters({
 export const auth = getAuth();
 
 // anonmyous function that returns signInWithPopUp, so no sqigglies, and we want to pass auth and the provider
-export const signInWithGoogleRedirect = () =>
-  signInWithPopup(auth, provider);
+export const signInWithGooglePopUp = () => signInWithPopup(auth, provider);
 
 // // points directly to our database
 // export const db = getFirestore();
