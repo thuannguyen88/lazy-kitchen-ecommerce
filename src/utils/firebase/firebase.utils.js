@@ -5,7 +5,7 @@ import {
   //   signInWithRedirect,
 } from "firebase/auth";
 
-// import { getFirestore, doc, getDoc, setDoc } from "firebase/firestore";
+import { getFirestore, doc, getDoc, setDoc } from "firebase/firestore";
 
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
@@ -40,35 +40,35 @@ export const auth = getAuth();
 // anonmyous function that returns signInWithPopUp, so no sqigglies, and we want to pass auth and the provider
 export const signInWithGooglePopUp = () => signInWithPopup(auth, provider);
 
-// // points directly to our database
-// export const db = getFirestore();
+// points directly to our database
+export const db = getFirestore();
 
-// // a method thats an async function that receives a user authentication object
-// export const createUserDocumentFromAuth = async (userAuth) => {
-//   // see if theres an existing document reference , a special object that firestore uses when talking about actual instance of a document model
-//   // doc takes 3 arguments; database, collections, identifier
-//   const userDocRef = doc(db, "users", userAuth.uid);
+// a method thats an async function that receives a user authentication object
+export const createUserDocumentFromAuth = async (userAuth) => {
+  // see if theres an existing document reference , a special object that firestore uses when talking about actual instance of a document model
+  // doc takes 3 arguments; database, collections, identifier
+  const userDocRef = doc(db, "users", userAuth.uid);
 
-//   console.log(userDocRef);
+  console.log(userDocRef);
 
-//   // userSnapshot allows us to check if an instance of the document exists within our database with userSnapshot.exists() and it also allows us to access the data
-//   const userSnapshot = await getDoc(userDocRef);
+  // userSnapshot allows us to check if an instance of the document exists within our database with userSnapshot.exists() and it also allows us to access the data
+  const userSnapshot = await getDoc(userDocRef);
 
-//   // check is snapshot exists, if it doesnt we want to create it inside of our database
-//   if (!userSnapshot.exists()) {
-//     const { displayName, email } = userAuth;
-//     // create a new data object so we know when users are signing in
-//     const createdAt = new Date();
+  // check is snapshot exists, if it doesnt we want to create it inside of our database
+  if (!userSnapshot.exists()) {
+    const { displayName, email } = userAuth;
+    // create a new data object so we know when users are signing in
+    const createdAt = new Date();
 
-//     try {
-//       await setDoc(userDocRef, {
-//         displayName,
-//         email,
-//         createdAt,
-//       });
-//     } catch (error) {
-//       console.log("error creating the user", error.message);
-//     }
-//   }
-//   return userDocRef;
-// }
+    try {
+      await setDoc(userDocRef, {
+        displayName,
+        email,
+        createdAt,
+      });
+    } catch (error) {
+      console.log("error creating the user", error.message);
+    }
+  }
+  return userDocRef;
+}
