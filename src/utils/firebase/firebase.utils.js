@@ -34,7 +34,7 @@ provider.setCustomParameters({
   prompt: "select_account",
 });
 
-// export create instance
+// export create instance. the auth is a singleton because it keeps track of the authentication state of the entire application. as the user signs in through different means and methods we need some way to be certain what it is the user has done where in the browser you navigate away from the website you are breaking the instance of the website, so this auth is the only way we can keep track of whether users are properly authenticating or not and thats whats great about this service of firebase.
 export const auth = getAuth();
 
 // anonmyous function that returns signInWithPopUp, so no sqigglies, and we want to pass auth and the provider
