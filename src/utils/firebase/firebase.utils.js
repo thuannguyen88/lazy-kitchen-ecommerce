@@ -1,8 +1,10 @@
+// create a seperation between my frontend and the services it relies on
+
 import {
   getAuth,
   signInWithPopup,
   GoogleAuthProvider,
-  //   signInWithRedirect,
+  createUserWithEmailAndPassword,
 } from "firebase/auth";
 
 import { getFirestore, doc, getDoc, setDoc } from "firebase/firestore";
@@ -44,7 +46,14 @@ export const signInWithGooglePopUp = () => signInWithPopup(auth, provider);
 export const db = getFirestore();
 
 // a method thats an async function that receives a user authentication object
-export const createUserDocumentFromAuth = async (userAuth) => {
+// in cases where we get additional information, as an object
+export const createUserDocumentFromAuth = async (
+  userAuth,
+  additionalInformation = { displayName: "" }
+) => {
+  // if no userAuth then we want to return, to protect code
+  if (!userAuth) return;
+
   // see if theres an existing document reference , a special object that firestore uses when talking about actual instance of a document model
   // doc takes 3 arguments; database, collections, identifier
   const userDocRef = doc(db, "users", userAuth.uid);
@@ -60,15 +69,24 @@ export const createUserDocumentFromAuth = async (userAuth) => {
     // create a new data object so we know when users are signing in
     const createdAt = new Date();
 
+    // after all fields have been filled, spread in the additionalInformation object. if displayName is full then we'll spread in the additonalinformation with displatName key and its string value which will overwrite the null value
     try {
       await setDoc(userDocRef, {
         displayName,
         email,
         createdAt,
+        ...additionalInformation,
       });
     } catch (error) {
       console.log("error creating the user", error.message);
     }
   }
   return userDocRef;
-}
+};
+
+export const createAuthUserWithEmailAndPassword = async (email, password) => {
+  if (!email || !password) return;
+  // if i domt get an email or password then i want to exit and not call this method
+  return await createUserWithEmailAndPassword(auth, email, password);
+  // return await value
+};
