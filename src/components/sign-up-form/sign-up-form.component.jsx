@@ -21,6 +21,7 @@ const SignUpForm = () => {
   // destructure and set as constants to use
   const { displayName, email, password, confirmPassword } = formFields;
 
+  // see values of formFields update onChange in console
   console.log(formFields);
 
   // reset form fields after submission
@@ -46,11 +47,14 @@ const SignUpForm = () => {
         email,
         password
       );
+      // assign the firebase auth object to user variable 
       // what does the response look like. now we know the response contains a user object from firebase, we can destructure that user.
       console.log(user);
 
+      // user document is an entry for our new user in our users collection/table
       // create user document from the auth
       // pass in the user object and the displayName from our signup form
+      // we pass in displayName because signing up via email and password does not provide a name
       await createUserDocumentFromAuth(user, { displayName });
 
       // after user document is created in database, we reset the form fields
@@ -64,6 +68,12 @@ const SignUpForm = () => {
       } else {
         console.log("handleSubmit user sign up error", error);
       }
+
+      if (error.code === "auth/weak-password") {
+        alert("password should be at least 6 characters");
+      } else {
+        console.log("handleSubmit user sign up error", error);
+      }
     }
   };
 
@@ -71,6 +81,7 @@ const SignUpForm = () => {
 
   // create a generic handlechange event to use for all form fields
   const handleChange = (event) => {
+    // destructure targeting the value and the name 
     const { name, value } = event.target;
     //  console.log(formFields);
     // preserve the form fields we aren't changing and for the form field we're targeting, set its name and value
@@ -94,24 +105,24 @@ const SignUpForm = () => {
           type="text"
           required
           onChange={handleChange}
-          name="displayName"
-          value={displayName}
+          name="email"
+          value={email}
         />
         <FormInput
           label="Password"
           type="text"
           required
           onChange={handleChange}
-          name="displayName"
-          value={displayName}
+          name="password"
+          value={password}
         />
         <FormInput
           label="Confirm Password"
           type="text"
           required
           onChange={handleChange}
-          name="displayName"
-          value={displayName}
+          name="confirmPassword"
+          value={confirmPassword}
         />
 
         <button type="submit">Sign Up</button>
