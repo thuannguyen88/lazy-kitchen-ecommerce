@@ -4,6 +4,7 @@ import {
 } from "../../utils/firebase/firebase.utils";
 
 import "./sign-in.styles.scss";
+import Button from "../../components/button/button.component";
 
 import SignUpForm from "../../components/sign-up-form/sign-up-form.component";
 
@@ -19,11 +20,14 @@ const SignIn = () => {
     <section>
       <div className="sign-in-section">
         <div className="sign-in-container">
-          <h1>I do not have an account</h1>
-          <button onClick={logGoogleUser} className="google-sign-in-button">
-            Sign up with Google
-          </button>
-          <div className="line"></div>
+          <h1>Sign up</h1>
+
+          <Button onClick={logGoogleUser} buttonType='google'>Continue with Google</Button>
+          <div className="line-container">
+            <div className="line"></div>
+            <span className="or">OR</span>
+          </div>
+
           <SignUpForm />
         </div>
         <div className="right-container">

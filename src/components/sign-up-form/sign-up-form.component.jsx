@@ -1,4 +1,6 @@
 import { useState } from "react";
+import "./sign-up-form.styles.scss";
+import Button from "../button/button.component";
 
 import {
   createAuthUserWithEmailAndPassword,
@@ -47,7 +49,7 @@ const SignUpForm = () => {
         email,
         password
       );
-      // assign the firebase auth object to user variable 
+      // assign the firebase auth object to user variable
       // what does the response look like. now we know the response contains a user object from firebase, we can destructure that user.
       console.log(user);
 
@@ -81,7 +83,7 @@ const SignUpForm = () => {
 
   // create a generic handlechange event to use for all form fields
   const handleChange = (event) => {
-    // destructure targeting the value and the name 
+    // destructure targeting the value and the name
     const { name, value } = event.target;
     //  console.log(formFields);
     // preserve the form fields we aren't changing and for the form field we're targeting, set its name and value
@@ -89,11 +91,11 @@ const SignUpForm = () => {
   };
 
   return (
-    <div>
-      <h1>Sign up with your email and password</h1>
+    <div className="email-sign-up-container">
+      <span>Sign up with your email and password</span>
       <form onSubmit={handleSubmit}>
         <FormInput
-          label="Display Name"
+          label="Display Name?"
           type="text"
           required
           onChange={handleChange}
@@ -110,7 +112,7 @@ const SignUpForm = () => {
         />
         <FormInput
           label="Password"
-          type="text"
+          type="password"
           required
           onChange={handleChange}
           name="password"
@@ -118,14 +120,13 @@ const SignUpForm = () => {
         />
         <FormInput
           label="Confirm Password"
-          type="text"
+          type="password"
           required
           onChange={handleChange}
           name="confirmPassword"
           value={confirmPassword}
         />
-
-        <button type="submit">Sign Up</button>
+        <Button type="submit">Continue</Button>
       </form>
     </div>
   );

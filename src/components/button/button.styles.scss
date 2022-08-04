@@ -1,0 +1,37 @@
+$main-color: rgb(124 58 237);
+$sub-color: white;
+
+.button-container {
+  border-radius: 50px;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  padding-right: 64px;
+  padding-left: 64px;
+  max-width: 290px;
+  width: 290px;
+  background-color: $main-color;
+  border-width: 1px;
+  font-weight: 600;
+  font-size: 15px;
+  border-color: $main-color;
+  color: $sub-color;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+
+  &:hover {
+    background-color: $sub-color;
+    color: $main-color;
+    transition: 150ms ease all;
+  }
+
+  &.google-sign-in-button {
+    background-color: transparent;
+    color: $main-color;
+
+    &:hover {
+      background-color: $main-color;
+      color: $sub-color;
+    }
+  }
+}

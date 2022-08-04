@@ -1,0 +1,64 @@
+// color styles
+$sub-color-2: rgb(203 213 225);
+$sub-color: rgb(100 116 139);
+$main-color: rgb(30 41 59);
+
+// declaring a shrinkLabel function for the label
+// when we type shrinkLabel function is called and transitions over 500ms, translate up 17px, font size gets smaller from 16px to 12px and color changes from sub-color to maincolor
+@mixin shrinkLabel {
+  top: -20px;
+  font-size: 12px;
+  color: $main-color;
+}
+
+.group {
+  position: relative;
+  margin: 40px 0;
+
+  // position form input label as absolute so label appears inside input box
+  .form-input-label {
+    color: $sub-color;
+    font-size: 16px;
+    font-weight: normal;
+    position: absolute;
+    pointer-events: none;
+    left: 20px;
+    top: 11px;
+    transition: 500ms ease all;
+
+    &.shrink {
+      @include shrinkLabel();
+    }
+  }
+
+  // formatting the form input field styles
+  // display as block to take whole line
+  .form-input {
+    background: none;
+    background-color: white;
+    color: $sub-color;
+    font-size: 20px;
+    padding: 10px 10px 10px 20px;
+    display: block;
+    width: 100%;
+    border: none;
+    border-radius: 30px;
+    border: 1px solid $sub-color-2;
+    margin: 25px 0;
+
+    // have no outline when clicking in input field
+    &:focus {
+      outline: none;
+    }
+
+    // if the input field is selected, i want you to find the next subsequent sibling with the class form-input-label and i want you to apply that shrinkLabel. It works only if the form-input is above the form-input-label in component
+    &:focus ~ .form-input-label {
+      @include shrinkLabel();
+    }
+  }
+
+  // styles the specific input field
+  input[type="password"] {
+    letter-spacing: 6px;
+  }
+}
