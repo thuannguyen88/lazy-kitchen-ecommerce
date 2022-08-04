@@ -17,11 +17,37 @@ $violet-300: rgb(196 181 253);
 $violet-200: rgb(221 214 254);
 $violet-100: rgb(237 233 254);
 
-.email-sign-up-container {
+.sign-up-section {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-right: 6px;
+  padding-left: 6px;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
-  color: $bg-slate-800;
-  margin-top: -30px;
+  background-color: rgb(249 250 251);
+  width: 100vw;
+  height: 100vh;
+  margin-top: -95px;
+
+  .sign-up-container {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    align-items: center;
+    padding-top: 32px;
+    padding-bottom: 32px;
+
+   
+  }
+
+  .log-in-link {
+    margin-top: 10px;
+    color: $bg-slate-500;
+
+    .nav-link {
+      color: $violet-900;
+    }
+  }
 }

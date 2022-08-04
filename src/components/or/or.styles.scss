@@ -1,0 +1,36 @@
+// color styles
+$bg-slate-300: rgb(203 213 225);
+$bg-slate-400: rgb(148 163 184);
+$bg-slate-500: rgb(100 116 139);
+$bg-slate-600: rgb(71 85 105);
+$bg-slate-700: rgb(51 65 85);
+$bg-slate-800: rgb(30 41 59);
+$bg-slate-900: rgb(15 23 42);
+
+.line-container {
+  display: flex;
+  flex-direction: row;
+  margin-top: 30px;
+  margin-bottom: 30px;
+
+  flex-wrap: wrap;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  max-width: 100px;
+
+  .line {
+    width: 100px;
+    // max-width: 100px;
+    border: 1px solid $bg-slate-400;
+  }
+
+  .or {
+    position: absolute;
+    bottom: -14px;
+    right: 35px;
+    background-color: rgb(249 250 251);
+    padding: 5px;
+    color: $bg-slate-500;
+  }
+}

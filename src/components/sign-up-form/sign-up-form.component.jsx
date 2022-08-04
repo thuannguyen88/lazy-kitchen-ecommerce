@@ -92,7 +92,7 @@ const SignUpForm = () => {
 
   return (
     <div className="email-sign-up-container">
-      <span>Sign up with your email and password</span>
+     
       <form onSubmit={handleSubmit}>
         <FormInput
           label="Display Name?"
@@ -128,6 +128,7 @@ const SignUpForm = () => {
         />
         <Button type="submit">Continue</Button>
       </form>
+     
     </div>
   );
 };

@@ -3,10 +3,13 @@ import {
   createUserDocumentFromAuth,
 } from "../../utils/firebase/firebase.utils";
 
-import "./sign-in.styles.scss";
+import "./sign-up.styles.scss";
 import Button from "../../components/button/button.component";
 
 import SignUpForm from "../../components/sign-up-form/sign-up-form.component";
+
+import Or from "../../components/or/or.component";
+import { Link } from "react-router-dom";
 
 const SignUp = () => {
   //all calls to database are async
@@ -18,20 +21,24 @@ const SignUp = () => {
 
   return (
     <section>
-      <div className="sign-in-section">
-        <div className="sign-in-container">
+      <div className="sign-up-section">
+        <div className="sign-up-container">
           <h1>Sign up</h1>
 
-          <Button onClick={logGoogleUser} buttonType='google'>Continue with Google</Button>
-          <div className="line-container">
-            <div className="line"></div>
-            <span className="or">OR</span>
-          </div>
+          <Button onClick={logGoogleUser} buttonType="google">
+            Continue with Google
+          </Button>
+
+          <Or />
 
           <SignUpForm />
-        </div>
-        <div className="right-container">
-          <h2>I'm the right div</h2>
+
+          <span className="log-in-link">
+            Already have an account?{` `}
+            <Link className="nav-link" to="/login">
+              Login here
+            </Link>
+          </span>
         </div>
       </div>
     </section>
