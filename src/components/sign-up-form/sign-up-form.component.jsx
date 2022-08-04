@@ -5,6 +5,9 @@ import {
   createUserDocumentFromAuth,
 } from "../../utils/firebase/firebase.utils";
 
+import FormInput from "../form-input/form-input.component";
+
+// empty states
 // create an object of default values to allow us to keep track of multiple fields inside of our form and make handleChange generic
 const defaultFormFields = {
   displayName: "",
@@ -46,12 +49,12 @@ const SignUpForm = () => {
       // what does the response look like. now we know the response contains a user object from firebase, we can destructure that user.
       console.log(user);
 
+      // create user document from the auth
       // pass in the user object and the displayName from our signup form
       await createUserDocumentFromAuth(user, { displayName });
 
       // after user document is created in database, we reset the form fields
       resetFormFields();
-      
     } catch (error) {
       // when testing with password 123, error printed on console saying "Firebase: Password should be at least 6 characters (auth/weak-password)." which can be used to display for the user, which is very"
 
@@ -78,38 +81,39 @@ const SignUpForm = () => {
     <div>
       <h1>Sign up with your email and password</h1>
       <form onSubmit={handleSubmit}>
-        <label>Display Name</label>
-        <input
+        <FormInput
+          label="Display Name"
           type="text"
           required
           onChange={handleChange}
           name="displayName"
           value={displayName}
         />
-        <label>Email</label>
-        <input
-          type="email"
+        <FormInput
+          label="Email"
+          type="text"
           required
           onChange={handleChange}
-          name="email"
-          value={email}
+          name="displayName"
+          value={displayName}
         />
-        <label>Password</label>
-        <input
-          type="password"
+        <FormInput
+          label="Password"
+          type="text"
           required
           onChange={handleChange}
-          name="password"
-          value={password}
+          name="displayName"
+          value={displayName}
         />
-        <label>Connfirm Password</label>
-        <input
-          type="password"
+        <FormInput
+          label="Confirm Password"
+          type="text"
           required
           onChange={handleChange}
-          name="confirmPassword"
-          value={confirmPassword}
+          name="displayName"
+          value={displayName}
         />
+
         <button type="submit">Sign Up</button>
       </form>
     </div>

@@ -3,6 +3,8 @@ import {
   createUserDocumentFromAuth,
 } from "../../utils/firebase/firebase.utils";
 
+import "./sign-in.styles.scss";
+
 import SignUpForm from "../../components/sign-up-form/sign-up-form.component";
 
 const SignIn = () => {
@@ -14,11 +16,21 @@ const SignIn = () => {
   };
 
   return (
-    <div>
-      <h1>I am a sign-in page</h1>
-      <button onClick={logGoogleUser}>Sign in with Google Redirect</button>
-      <SignUpForm />
-    </div>
+    <section>
+      <div className="sign-in-section">
+        <div className="sign-in-container">
+          <h1>I do not have an account</h1>
+          <button onClick={logGoogleUser} className="google-sign-in-button">
+            Sign up with Google
+          </button>
+          <div className="line"></div>
+          <SignUpForm />
+        </div>
+        <div className="right-container">
+          <h2>I'm the right div</h2>
+        </div>
+      </div>
+    </section>
   );
 };
 
