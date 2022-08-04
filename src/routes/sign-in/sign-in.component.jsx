@@ -8,7 +8,7 @@ import Button from "../../components/button/button.component";
 
 import SignUpForm from "../../components/sign-up-form/sign-up-form.component";
 
-const SignIn = () => {
+const SignUp = () => {
   //all calls to database are async
   const logGoogleUser = async () => {
     const { user } = await signInWithGooglePopUp();
@@ -38,4 +38,4 @@ const SignIn = () => {
   );
 };
 
-export default SignIn;
+export default SignUp;

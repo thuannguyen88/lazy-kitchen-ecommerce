@@ -1,5 +1,13 @@
-$main-color: rgb(124 58 237);
-$sub-color: white;
+$violet-900: rgb(76 29 149);
+$violet-800: rgb(91 33 182);
+$violet-700: rgb(109 40 217);
+$violet-600: rgb(124 58 237);
+$violet-500: rgb(139 92 246);
+$violet-400: rgb(167 139 250);
+$violet-300: rgb(196 181 253);
+$violet-200: rgb(221 214 254);
+$violet-100: rgb(237 233 254);
+$white-color: white;
 
 .button-container {
   border-radius: 50px;
@@ -9,29 +17,29 @@ $sub-color: white;
   padding-left: 64px;
   max-width: 290px;
   width: 290px;
-  background-color: $main-color;
+  background-color: $violet-700;
   border-width: 1px;
   font-weight: 600;
   font-size: 15px;
-  border-color: $main-color;
-  color: $sub-color;
+  border-color: $violet-700;
+  color: $white-color;
   cursor: pointer;
   display: flex;
   justify-content: center;
 
   &:hover {
-    background-color: $sub-color;
-    color: $main-color;
+    background-color: $violet-900;
+    color: $white-color;
     transition: 150ms ease all;
   }
 
   &.google-sign-in-button {
     background-color: transparent;
-    color: $main-color;
+    color: $violet-700;
 
     &:hover {
-      background-color: $main-color;
-      color: $sub-color;
+      background-color: $violet-700;
+      color: $white-color;
     }
   }
 }
