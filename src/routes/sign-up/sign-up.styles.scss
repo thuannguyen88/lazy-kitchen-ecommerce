@@ -30,6 +30,8 @@ $violet-100: rgb(237 233 254);
   width: 100vw;
   height: 100vh;
   margin-top: -95px;
+  margin-left: auto;
+  margin-right: auto;
 
   .sign-up-container {
     display: flex;
@@ -38,14 +40,26 @@ $violet-100: rgb(237 233 254);
     align-items: center;
     padding-top: 32px;
     padding-bottom: 32px;
+    justify-content: center;
+    align-items: center;
+
+    .google-text {
+      display: flex;
+      justify-content: center;
+      margin: auto;
+
+      .google-icon {
+        height: 100%;
+        width: 15px;
+        margin-right: 15px;
+       
+      }
+    }
   }
 
-  .log-in-link {
-    margin-top: 10px;
+  .disclaimer-container {
     color: $bg-slate-500;
-
-    .nav-link {
-      color: $violet-900;
-    }
+    max-width: 390px;
+    font-size: 12px;
   }
 }

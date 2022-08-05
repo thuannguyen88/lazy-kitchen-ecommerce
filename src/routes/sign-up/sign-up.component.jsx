@@ -9,7 +9,9 @@ import Button from "../../components/button/button.component";
 import SignUpForm from "../../components/sign-up-form/sign-up-form.component";
 
 import Or from "../../components/or/or.component";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
+
+import { ReactComponent as GoogleIcon } from "../../assets/google_icon_color.svg";
 
 const SignUp = () => {
   //all calls to database are async
@@ -26,19 +28,21 @@ const SignUp = () => {
           <h1>Sign up</h1>
 
           <Button onClick={logGoogleUser} buttonType="google">
-            Continue with Google
+            <span className="google-text">
+              <GoogleIcon className="google-icon"></GoogleIcon> Continue with
+              Google
+            </span>
           </Button>
 
           <Or />
 
           <SignUpForm />
 
-          <span className="log-in-link">
-            Already have an account?{` `}
-            <Link className="nav-link" to="/login">
-              Login here
-            </Link>
-          </span>
+          <p className="disclaimer-container">
+            By signing up, you agree to our Privacy Policy, Cookie Policy,
+            Member Agreement, and that we may share your personal information
+            with our partners to confirm your account.
+          </p>
         </div>
       </div>
     </section>
