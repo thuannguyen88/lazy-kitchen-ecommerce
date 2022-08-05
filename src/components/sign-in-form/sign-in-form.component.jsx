@@ -10,6 +10,7 @@ import {
 } from "../../utils/firebase/firebase.utils";
 
 import FormInput from "../form-input/form-input.component";
+import { ReactComponent as GoogleIcon } from "../../assets/google_icon_color.svg";
 
 // empty states
 // create an empty object with email and password
@@ -113,7 +114,10 @@ const SignInForm = () => {
       <Or />
 
       <Button type="button" onClick={signInWithGoogle} buttonType="google">
-        Continue with Google
+      <span className="google-text">
+              <GoogleIcon className="google-icon"></GoogleIcon> Continue with
+              Google
+            </span>
       </Button>
     </div>
   );
