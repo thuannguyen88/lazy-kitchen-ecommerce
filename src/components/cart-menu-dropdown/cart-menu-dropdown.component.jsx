@@ -3,7 +3,7 @@ import Button from "../button/button.component";
 
 const CartDropdownMenu = () => {
   return (
-    <div className="cart-menu-container">
+    <div className="cart-menu-container" >
       <div className="cart-items">
         <Button buttonType="checkout">CHECKOUT</Button>
       </div>
