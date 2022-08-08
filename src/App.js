@@ -4,10 +4,9 @@ import Home from "./routes/home/home.component";
 import Navigation from "./routes/navigation/navigation.component";
 import SignUp from "./routes/sign-up/sign-up.component";
 import LogIn from "./routes/log-in/log-in.component";
+import Shop from "./routes/shop/shop.component";
 
-const Shop = () => {
-  return <div>I am a shop</div>;
-};
+
 
 const App = () => {
   return (
