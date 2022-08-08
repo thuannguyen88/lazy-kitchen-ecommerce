@@ -1,0 +1,8 @@
+// display products in a grid format. I want the columns to be in 4 equal sizes, repeat 4 times, 1 evenly distributed and equal distanced size so if we have a 100px and we have (4, 1fr) then we're dividing that 100px by 4 so will be 25px
+
+.products-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: 10px;
+  row-gap: 50px;
+}
