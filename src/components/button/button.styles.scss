@@ -7,7 +7,19 @@ $violet-400: rgb(167 139 250);
 $violet-300: rgb(196 181 253);
 $violet-200: rgb(221 214 254);
 $violet-100: rgb(237 233 254);
+
 $white-color: white;
+
+//green
+$green-900: rgb(20 83 45);
+$green-800: rgb(22 101 52);
+$green-700: rgb(21 128 61);
+$green-600: rgb(22 163 74);
+$green-500: rgb(34 197 94);
+$green-400: rgb(74 222 128);
+$green-300: rgb(134 239 172);
+$green-200: rgb(187 247 208);
+$green-100: rgb(220 252 231);
 
 .button-container {
   border-radius: 50px;
@@ -39,6 +51,26 @@ $white-color: white;
 
     &:hover {
       background-color: $violet-700;
+      color: $white-color;
+    }
+  }
+
+  &.inverted-button {
+    background-color: transparent;
+    color: $violet-700;
+
+    &:hover {
+      background-color: $violet-700;
+      color: $white-color;
+    }
+  }
+
+  &.checkout-button {
+    background-color: $green-700;
+    color: $white-color;
+
+    &:hover {
+      background-color: $green-800;
       color: $white-color;
     }
   }

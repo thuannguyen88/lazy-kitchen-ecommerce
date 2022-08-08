@@ -2,6 +2,7 @@ import { Fragment, useContext } from "react";
 import { Outlet, Link } from "react-router-dom";
 
 import CartIcon from "../../components/cart-icon/cart-icon.component";
+import CartDropdownMenu from "../../components/cart-menu-dropdown/cart-menu-dropdown.component";
 
 import { ReactComponent as LazyKitchenLogo } from "../../assets/lazy_kitchen_logo.svg";
 import { UserContext } from "../../contexts/user.context";
@@ -39,6 +40,7 @@ const Navigation = () => {
           )}
           <CartIcon />
         </div>
+        <CartDropdownMenu />
       </div>
       <Outlet />
     </Fragment>

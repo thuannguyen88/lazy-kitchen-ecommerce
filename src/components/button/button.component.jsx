@@ -9,6 +9,7 @@ import "./button.styles.scss";
 const BUTTON_TYPES = {
   google: "google-sign-in-button",
   inverted: "inverted-button",
+  checkout: "checkout-button",
 };
 
 // we can spread otherProps because buttons will container other props like type=submit
