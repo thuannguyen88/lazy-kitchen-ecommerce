@@ -1,24 +1,31 @@
+// import { useContext } from "react";
+
 import {
   signInWithGooglePopUp,
   createUserDocumentFromAuth,
 } from "../../utils/firebase/firebase.utils";
 
-import "./sign-up.styles.scss";
 import Button from "../../components/button/button.component";
-
 import SignUpForm from "../../components/sign-up-form/sign-up-form.component";
-
 import Or from "../../components/or/or.component";
 // import { Link } from "react-router-dom";
 
 import { ReactComponent as GoogleIcon } from "../../assets/google_icon_color.svg";
 
+// import { UserContext } from "../../contexts/user.context";
+
+import "./sign-up.styles.scss";
+
 const SignUp = () => {
+  // const { setCurrentUser } = useContext(UserContext);
+
   //all calls to database are async
   const logGoogleUser = async () => {
-    const { user } = await signInWithGooglePopUp();
+    await signInWithGooglePopUp();
     //  console.log(response);
-    const userDocRef = await createUserDocumentFromAuth(user);
+    // setCurrentUser(user);
+
+    // await createUserDocumentFromAuth(user);
   };
 
   return (

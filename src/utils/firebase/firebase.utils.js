@@ -6,6 +6,8 @@ import {
   GoogleAuthProvider,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  signOut,
+  onAuthStateChanged,
 } from "firebase/auth";
 
 import { getFirestore, doc, getDoc, setDoc } from "firebase/firestore";
@@ -98,4 +100,21 @@ export const signInAuthUserWithEmailAndPassword = async (email, password) => {
   // if i dont get an email or password then i want to exit and not call this method
   return await signInWithEmailAndPassword(auth, email, password);
   // return await value
+};
+
+// create interfact layer function for signing out
+export const signOutAuthUser = async () => await signOut(auth);
+
+// create a helper function for returning back an observer listener
+// for it to work it takes two parameters; first being auth singleton, second being a callback we want to call everytime this auth state changed
+// onAuthStateChanged is behind the scenes creating a listener for us, and in here its going to take our next value and set is our callback for this observer pattern
+// we optionally also have available from the observer pattern more parameters 'error' callback as number 3 and 'completed' callback as number 4
+// onAuthStateChanged(auth, callback, errorCallback, completedCallback);
+// {
+// next: callback
+// error: errorCallback,
+// complete: completedCallback
+// }
+export const onAuthStateChangedListener = async (callback) => {
+  return await onAuthStateChanged(auth, callback);
 };

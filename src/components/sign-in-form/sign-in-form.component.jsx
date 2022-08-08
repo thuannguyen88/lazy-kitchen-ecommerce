@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useState, } from "react";
 import "./sign-in-form.styles.scss";
 import Button from "../button/button.component";
 import Or from "../or/or.component";
+import FormInput from "../form-input/form-input.component";
 
 import {
   signInAuthUserWithEmailAndPassword,
@@ -9,7 +10,6 @@ import {
   signInWithGooglePopUp,
 } from "../../utils/firebase/firebase.utils";
 
-import FormInput from "../form-input/form-input.component";
 import { ReactComponent as GoogleIcon } from "../../assets/google_icon_color.svg";
 
 // empty states
@@ -24,8 +24,10 @@ const SignInForm = () => {
   // destructure and set as constants to use
   const { email, password } = formFields;
 
+
+
   // see values of formFields update onChange in console
-  console.log(formFields);
+  // console.log(formFields);
 
   // reset form fields after submission
   const resetFormFields = () => {
@@ -33,9 +35,9 @@ const SignInForm = () => {
   };
 
   const signInWithGoogle = async () => {
-    const { user } = await signInWithGooglePopUp();
+    await signInWithGooglePopUp();
 
-    createUserDocumentFromAuth(user);
+   
   };
 
   // a method that leverages the form fields in order to actually create this method
@@ -44,12 +46,13 @@ const SignInForm = () => {
     event.preventDefault();
 
     try {
-      const response = await signInAuthUserWithEmailAndPassword(
+      await signInAuthUserWithEmailAndPassword(
         email,
         password
       );
 
-      console.log(response);
+
+      // console.log(response);
 
       resetFormFields();
     } catch (error) {
@@ -114,10 +117,9 @@ const SignInForm = () => {
       <Or />
 
       <Button type="button" onClick={signInWithGoogle} buttonType="google">
-      <span className="google-text">
-              <GoogleIcon className="google-icon"></GoogleIcon> Continue with
-              Google
-            </span>
+        <span className="google-text">
+          <GoogleIcon className="google-icon"></GoogleIcon> Continue with Google
+        </span>
       </Button>
     </div>
   );

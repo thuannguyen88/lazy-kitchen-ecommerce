@@ -1,13 +1,15 @@
-import { useState } from "react";
+import {  useState } from "react";
 import "./sign-up-form.styles.scss";
 import Button from "../button/button.component";
+import FormInput from "../form-input/form-input.component";
+
+
 
 import {
   createAuthUserWithEmailAndPassword,
   createUserDocumentFromAuth,
 } from "../../utils/firebase/firebase.utils";
 
-import FormInput from "../form-input/form-input.component";
 
 // empty states
 // create an object of default values to allow us to keep track of multiple fields inside of our form and make handleChange generic
@@ -23,8 +25,10 @@ const SignUpForm = () => {
   // destructure and set as constants to use
   const { displayName, email, password, confirmPassword } = formFields;
 
+
+
   // see values of formFields update onChange in console
-  console.log(formFields);
+  // console.log(formFields);
 
   // reset form fields after submission
   const resetFormFields = () => {
@@ -52,6 +56,8 @@ const SignUpForm = () => {
       // assign the firebase auth object to user variable
       // what does the response look like. now we know the response contains a user object from firebase, we can destructure that user.
       console.log(user);
+
+ 
 
       // user document is an entry for our new user in our users collection/table
       // create user document from the auth
