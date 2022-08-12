@@ -8,7 +8,8 @@ $violet-300: rgb(196 181 253);
 $violet-200: rgb(221 214 254);
 $violet-100: rgb(237 233 254);
 
-$white-color: white;
+$white-color: rgb(255 255 255);
+$black-color: rgb(0 0 0);
 
 //green
 $green-900: rgb(20 83 45);
@@ -21,6 +22,18 @@ $green-300: rgb(134 239 172);
 $green-200: rgb(187 247 208);
 $green-100: rgb(220 252 231);
 
+//slate
+$slate-50: rgb(248 250 252);
+$slate-100: rgb(241 245 249);
+$slate-200: rgb(226 232 240);
+$slate-300: rgb(203 213 225);
+$slate-400: rgb(148 163 184);
+$slate-500: rgb(100 116 139);
+$slate-600: rgb(71 85 105);
+$slate-700: rgb(51 65 85);
+$slate-800: rgb(30 41 59);
+$slate-900: rgb(15 23 42);
+
 .button-container {
   border-radius: 50px;
   padding-top: 16px;
@@ -30,7 +43,6 @@ $green-100: rgb(220 252 231);
   max-width: 400px;
   width: 400px;
   background-color: $violet-700;
-  border-width: 1px;
   font-weight: 600;
   font-size: 15px;
   border-color: $violet-700;
@@ -38,6 +50,7 @@ $green-100: rgb(220 252 231);
   cursor: pointer;
   display: flex;
   justify-content: center;
+  border: 1px solid transparent;
 
   &:hover {
     background-color: $violet-900;
@@ -68,10 +81,24 @@ $green-100: rgb(220 252 231);
   &.checkout-button {
     background-color: $green-700;
     color: $white-color;
+    border-color: $green-700;
 
     &:hover {
       background-color: $green-800;
       color: $white-color;
+      border-color: $green-800;
+    }
+  }
+
+  &.secondary-button {
+    background-color: $white-color;
+    color: $slate-900;
+    border-color: $slate-300;
+
+    &:hover {
+      background-color: $slate-200;
+      color: $slate-900;
+      border-color: $slate-300;
     }
   }
 }
