@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import { Link } from "react-router-dom";
 
 import { DropdownContext } from "../../contexts/dropdown.context";
 
@@ -14,8 +15,12 @@ const CartDropdownMenu = () => {
   return (
     <div className="cart-menu-container">
       <div className="cart-items">
-        {cartItems.map((item)=> <CartItem cartItem={item} key={item.id}/>)}
-        <Button buttonType="checkout">CHECKOUT</Button>
+        {cartItems.map((item) => (
+          <CartItem cartItem={item} key={item.id} />
+        ))}
+        <Link className="checkout-link" to="/checkout">
+          <Button buttonType="checkout">CHECKOUT</Button>
+        </Link>
       </div>
     </div>
   );

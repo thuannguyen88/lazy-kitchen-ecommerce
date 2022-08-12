@@ -20,8 +20,11 @@
     overflow: scroll;
   }
 
-  button {
-    width: 100%;
+  .checkout-link {
     margin-top: auto;
+
+    button {
+      width: 100%;
+    }
   }
 }

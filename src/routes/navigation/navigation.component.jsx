@@ -18,9 +18,6 @@ const Navigation = () => {
 
   // use DropdownContext to use isDropdownOpen to set up conditional render, if isDropdownOpen is true render CartDropdownMenu component, otherwise render nothing
   const { isDropdownOpen, setIsDropdownOpen } = useContext(DropdownContext);
-  
-
- 
 
   return (
     <Fragment>
@@ -44,9 +41,11 @@ const Navigation = () => {
               LOG IN
             </Link>
           )}
-          <CartIcon />
+      
+            <CartIcon />
+        
         </div>
-        {isDropdownOpen ? <CartDropdownMenu  /> : ""}
+        {isDropdownOpen ? <CartDropdownMenu /> : ""}
       </div>
       <Outlet />
     </Fragment>
