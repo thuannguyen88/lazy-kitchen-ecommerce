@@ -17,7 +17,7 @@ const Navigation = () => {
   const { currentUser } = useContext(UserContext);
 
   // use DropdownContext to use isDropdownOpen to set up conditional render, if isDropdownOpen is true render CartDropdownMenu component, otherwise render nothing
-  const { isDropdownOpen, setIsDropdownOpen } = useContext(DropdownContext);
+  const { isDropdownOpen} = useContext(DropdownContext);
 
   return (
     <Fragment>

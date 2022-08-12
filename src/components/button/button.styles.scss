@@ -43,8 +43,8 @@ $slate-900: rgb(15 23 42);
   max-width: 400px;
   width: 400px;
   background-color: $violet-700;
-  font-weight: 600;
-  font-size: 15px;
+  font-weight: 900;
+  font-size: 14px;
   border-color: $violet-700;
   color: $white-color;
   cursor: pointer;
@@ -60,7 +60,8 @@ $slate-900: rgb(15 23 42);
 
   &.google-sign-in-button {
     background-color: transparent;
-    color: $violet-700;
+    color: $slate-900;
+    border-color: $slate-400;
 
     &:hover {
       background-color: $violet-700;
@@ -99,6 +100,17 @@ $slate-900: rgb(15 23 42);
       background-color: $slate-200;
       color: $slate-900;
       border-color: $slate-300;
+    }
+  }
+
+  &.save-button {
+    background-color: $white-color;
+    color: $slate-700;
+    border-color: $slate-300;
+
+    &:hover {
+      color: $slate-900;
+      border-color: $slate-900;
     }
   }
 }

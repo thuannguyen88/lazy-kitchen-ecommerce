@@ -1,0 +1,190 @@
+$violet-900: rgb(76 29 149);
+$violet-800: rgb(91 33 182);
+$violet-700: rgb(109 40 217);
+$violet-600: rgb(124 58 237);
+$violet-500: rgb(139 92 246);
+$violet-400: rgb(167 139 250);
+$violet-300: rgb(196 181 253);
+$violet-200: rgb(221 214 254);
+$violet-100: rgb(237 233 254);
+
+$white-color: rgb(255 255 255);
+$black-color: rgb(0 0 0);
+
+//green
+$green-900: rgb(20 83 45);
+$green-800: rgb(22 101 52);
+$green-700: rgb(21 128 61);
+$green-600: rgb(22 163 74);
+$green-500: rgb(34 197 94);
+$green-400: rgb(74 222 128);
+$green-300: rgb(134 239 172);
+$green-200: rgb(187 247 208);
+$green-100: rgb(220 252 231);
+
+//slate
+$slate-50: rgb(248 250 252);
+$slate-100: rgb(241 245 249);
+$slate-200: rgb(226 232 240);
+$slate-300: rgb(203 213 225);
+$slate-400: rgb(148 163 184);
+$slate-500: rgb(100 116 139);
+$slate-600: rgb(71 85 105);
+$slate-700: rgb(51 65 85);
+$slate-800: rgb(30 41 59);
+$slate-900: rgb(15 23 42);
+
+.section-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $slate-100;
+  padding-top: 30px;
+  padding-bottom: 30px;
+
+  .my-bag-container {
+    display: flex;
+    flex-direction: row;
+    flex-basis: 940px;
+    justify-content: center;
+    flex-wrap: wrap;
+    row-gap: 10px;
+    column-gap: 10px;
+
+    .bag-item-container {
+      display: flex;
+      flex-direction: column;
+      flex-basis: 572px;
+
+      row-gap: 10px;
+
+      .bag-header {
+        width: 100%;
+        padding: 24px 30px;
+        //   border: solid 1px purple;
+        background-color: $white-color;
+
+        .heading {
+          margin: 0px;
+          color: $slate-800;
+          letter-spacing: 0.1rem;
+        }
+      }
+
+      .item-card {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-start;
+        width: 100%;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        padding-left: 30px;
+        padding-right: 30px;
+        min-height: 180px;
+        background-color: white;
+
+        .item-image {
+          height: 140px;
+        }
+
+        .item-description {
+          display: flex;
+          flex-direction: column;
+          flex-basis: 335px;
+          row-gap: 10px;
+          max-height: 136px;
+
+          .item-description-price {
+            font-weight: 900;
+            letter-spacing: 0.1rem;
+          }
+
+          .item-description-name {
+            font-size: 13px;
+            line-height: 1.2rem;
+            font-weight: 400;
+            letter-spacing: 0.1rem;
+          }
+
+          .item-description-quantity {
+            font-size: 12px;
+          }
+
+          button {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            width: 35%;
+            font-size: 10px;
+            padding: 10px 5px;
+            font-weight: 200;
+
+            .favourite-icon {
+              height: 12px;
+              width: 12px;
+              margin-right: 5px;
+              fill: $slate-400;
+            }
+          }
+
+          button:hover {
+            .favourite-icon {
+              fill: $slate-900;
+            }
+          }
+        }
+
+        .delete-item {
+          font-size: 18px;
+        }
+      }
+    }
+
+    // right side container
+    .bag-total-wrapper {
+      display: flex;
+      flex-direction: column;
+      flex-basis: 300px;
+      height: 220px;
+      padding: 5px 30px;
+      background-color: $white-color;
+      flex-grow: 1;
+      max-width: 510px;
+      justify-content: space-between;
+      padding-bottom: 30px;
+
+      .bag-total-title-container {
+        display: flex;
+        flex-direction: column;
+
+        .total-title {
+          margin-bottom: 24px;
+          letter-spacing: 0.1rem;
+        }
+
+        .sub-total-title {
+          border-top: 1px solid $slate-300;
+          padding-top: 20px;
+          padding-bottom: 12px;
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          font-weight: 600;
+          letter-spacing: 0.1rem;
+
+          .sub-total-price {
+            font-weight: 400;
+          }
+        }
+      }
+
+      button {
+        width: 100%;
+        font-size: 17px;
+      }
+    }
+  }
+}

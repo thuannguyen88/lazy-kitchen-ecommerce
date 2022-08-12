@@ -10,7 +10,8 @@ const BUTTON_TYPES = {
   google: "google-sign-in-button",
   inverted: "inverted-button",
   checkout: "checkout-button",
-  secondary: "secondary-button"
+  secondary: "secondary-button",
+  save: "save-button",
 };
 
 // we can spread otherProps because buttons will container other props like type=submit
