@@ -86,7 +86,7 @@ export const DropdownProvider = ({ children }) => {
   const incrementCartItemQuantity = (
     cartItems,
     productToUpdate,
-    counterOption
+  
   ) => {
     console.log(cartItems, "cart items");
     console.log(productToUpdate, "product to update");
