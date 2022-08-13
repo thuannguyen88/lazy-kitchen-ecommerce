@@ -40,6 +40,7 @@ export const DropdownContext = createContext({
   cartQuantity: 0,
   cartTotal: 0,
   updateCartItemQuantity: () => {},
+  removeCartItem: () => {},
 });
 
 // create provider for context
@@ -83,11 +84,7 @@ export const DropdownProvider = ({ children }) => {
 
   // a function when a user clicks more or less icon, updates the cartItem quantity
   // returns a new array with updated quantity increase by 1
-  const incrementCartItemQuantity = (
-    cartItems,
-    productToUpdate,
-  
-  ) => {
+  const incrementCartItemQuantity = (cartItems, productToUpdate) => {
     console.log(cartItems, "cart items");
     console.log(productToUpdate, "product to update");
 
@@ -106,6 +103,7 @@ export const DropdownProvider = ({ children }) => {
     );
   };
 
+  // functionality to handle different cases whether to increment or decrement
   const updateCartItemQuantity = (productToUpdate, option) => {
     switch (option) {
       case "increment":
@@ -119,6 +117,19 @@ export const DropdownProvider = ({ children }) => {
     }
   };
 
+  const deleteCartItem = (cartItems, productToDelete) => {
+    // filter cartItems array for all items that don't match the productToDelete
+    console.log(productToDelete, "product to delete");
+    console.log(cartItems, "cart items array");
+
+    return cartItems.filter((cartItem) => cartItem.id !== productToDelete.id);
+  };
+
+  // functionality to handle removing item from cartItems array
+  const removeCartItem = (productToDelete) => {
+    setCartItems(deleteCartItem(cartItems, productToDelete));
+  };
+
   // generate the values to be exported
   const value = {
     isDropdownOpen,
@@ -128,6 +139,7 @@ export const DropdownProvider = ({ children }) => {
     cartQuantity,
     cartTotal,
     updateCartItemQuantity,
+    removeCartItem,
   };
 
   return (

@@ -7,7 +7,8 @@ import { ReactComponent as FaveIcon } from "../../assets/fave_icon.svg";
 import { DropdownContext } from "../../contexts/dropdown.context";
 
 const BagCartItem = ({ cartItem }) => {
-  const { updateCartItemQuantity } = useContext(DropdownContext);
+  const { updateCartItemQuantity, removeCartItem } =
+    useContext(DropdownContext);
 
   // destructure variables to use from cartItem prop
   const { name, imageUrl, price, quantity } = cartItem;
@@ -22,6 +23,8 @@ const BagCartItem = ({ cartItem }) => {
     console.log(cartItem, "cartItem");
     console.log(option, "option");
   };
+
+  const removeItemFromCart = () => removeCartItem(cartItem);
 
   return (
     <div className="item-card">
@@ -52,7 +55,9 @@ const BagCartItem = ({ cartItem }) => {
           Save for later
         </Button>
       </div>
-      <div className="delete-item">X</div>
+      <div className="delete-item">
+        <Button onClick={removeItemFromCart}>X</Button>
+      </div>
     </div>
   );
 };

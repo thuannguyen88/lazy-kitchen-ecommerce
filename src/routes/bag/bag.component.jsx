@@ -15,6 +15,7 @@ import { DropdownContext } from "../../contexts/dropdown.context";
 // each time use clicks on more or less than icon cartItems quantity will either increase or decrease by 1
 
 // connect the delete 'X' so when clicked the item is removed from cartItems
+  // filter out cartItems where id !== so you get an array with all items except the one we're trying to remove
 
 const Bag = () => {
   // pull in the states and setter functions from DropdownContext
