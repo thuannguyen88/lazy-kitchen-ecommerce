@@ -108,8 +108,26 @@ $slate-900: rgb(15 23 42);
             letter-spacing: 0.1rem;
           }
 
-          .item-description-quantity {
-            font-size: 12px;
+          .item-quantity-wrapper {
+            flex-basis: 300px;
+
+            .item-description-quantity {
+              display: flex;
+              flex-direction: row;
+              font-size: 13px;
+              justify-content: flex-start;
+              align-items: center;
+
+              .counter-container {
+                display: inherit;
+                justify-content: center;
+                align-items: center;
+                min-width: 100px;
+                border: 1px solid $slate-300;
+                border-radius: 50px;
+                margin-left: 10px;
+              }
+            }
           }
 
           button {
@@ -118,8 +136,8 @@ $slate-900: rgb(15 23 42);
             justify-content: center;
             align-items: center;
             width: 35%;
-            font-size: 10px;
-            padding: 10px 5px;
+            // font-size: 10px;
+            // padding: 10px 5px;
             font-weight: 200;
 
             .favourite-icon {

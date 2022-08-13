@@ -37,7 +37,9 @@ export const DropdownContext = createContext({
   setIsDropdownOpen: () => {},
   cartItems: [],
   addItemToCart: () => {},
-  cartQuantityCount: 0,
+  cartQuantity: 0,
+  cartTotal: 0,
+  updateCartItemQuantity: () => {},
 });
 
 // create provider for context
@@ -46,6 +48,7 @@ export const DropdownProvider = ({ children }) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [cartItems, setCartItems] = useState([]);
   const [cartQuantity, setCartQuantity] = useState(0);
+  const [cartTotal, setCartTotal] = useState(0);
 
   // a function that takes a product we want to add cart, and adds it to cartItems
   const addItemToCart = (productToAdd) => {
@@ -55,7 +58,8 @@ export const DropdownProvider = ({ children }) => {
   // anytime the cartItems array changes, we want to recalculate the total quantity in cart
   useEffect(() => {
     // reduce takes two arguments, first is the callback and the second is the starting value. starting with a value of 0, we will go through each cartItem and check the quantity and add it to the currentTotal
-    const totalCartQuantity = cartItems.reduce(
+    // why was we getting error of undefined reading reduce after onClick increment?
+    const totalCartQuantity = cartItems?.reduce(
       (currentTotal, currentCartItem) =>
         currentTotal + currentCartItem.quantity,
       0
@@ -64,8 +68,67 @@ export const DropdownProvider = ({ children }) => {
     setCartQuantity(totalCartQuantity);
   }, [cartItems]);
 
+  // a function that calculate cartTotal from cartItems
+  // everytime the cartItems array changes we want to recalculate the total, so can use useEffect
+  useEffect(() => {
+    // why was we getting error of undefined reading reduce after onClick increment?
+    const totalCartPrice = cartItems?.reduce(
+      (currentTotal, currentCartItem) =>
+        currentTotal + currentCartItem.price * currentCartItem.quantity,
+      0
+    );
+
+    setCartTotal(totalCartPrice);
+  }, [cartItems]);
+
+  // a function when a user clicks more or less icon, updates the cartItem quantity
+  // returns a new array with updated quantity increase by 1
+  const incrementCartItemQuantity = (
+    cartItems,
+    productToUpdate,
+    counterOption
+  ) => {
+    console.log(cartItems, "cart items");
+    console.log(productToUpdate, "product to update");
+
+    return cartItems.map((cartItem) =>
+      cartItem.id === productToUpdate.id
+        ? { ...cartItem, quantity: cartItem.quantity + 1 }
+        : cartItem
+    );
+  };
+
+  const decrementCartItemQuantity = (cartItems, productToUpdate) => {
+    return cartItems.map((cartItem) =>
+      cartItem.id === productToUpdate.id
+        ? { ...cartItem, quantity: cartItem.quantity - 1 }
+        : cartItem
+    );
+  };
+
+  const updateCartItemQuantity = (productToUpdate, option) => {
+    switch (option) {
+      case "increment":
+        setCartItems(incrementCartItemQuantity(cartItems, productToUpdate));
+        break;
+      case "decrement":
+        setCartItems(decrementCartItemQuantity(cartItems, productToUpdate));
+        break;
+      default:
+        return;
+    }
+  };
+
   // generate the values to be exported
-  const value = { isDropdownOpen, setIsDropdownOpen, addItemToCart, cartItems, cartQuantity };
+  const value = {
+    isDropdownOpen,
+    setIsDropdownOpen,
+    addItemToCart,
+    cartItems,
+    cartQuantity,
+    cartTotal,
+    updateCartItemQuantity,
+  };
 
   return (
     <DropdownContext.Provider value={value}>

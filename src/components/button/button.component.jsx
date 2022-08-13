@@ -12,6 +12,7 @@ const BUTTON_TYPES = {
   checkout: "checkout-button",
   secondary: "secondary-button",
   save: "save-button",
+  counter: "counter-button",
 };
 
 // we can spread otherProps because buttons will container other props like type=submit

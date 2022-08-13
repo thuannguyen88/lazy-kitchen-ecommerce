@@ -106,11 +106,21 @@ $slate-900: rgb(15 23 42);
   &.save-button {
     background-color: $white-color;
     color: $slate-700;
-    border-color: $slate-300;
+
+    padding: 10px 5px;
+    font-size: 10px;
 
     &:hover {
       color: $slate-900;
-      border-color: $slate-900;
     }
+  }
+
+  &.counter-button {
+    background-color: $white-color;
+    color: $slate-700;
+    // border-color: $slate-300;
+    max-width: 40px;
+    padding: 1px 1px;
+    font-size: 25px;
   }
 }

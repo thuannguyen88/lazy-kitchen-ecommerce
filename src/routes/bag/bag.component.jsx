@@ -1,9 +1,26 @@
 import "./bag.styles.scss";
-import Button from "../../components/button/button.component";
-import SHOP_DATA from "../../shop-data.json";
-import { ReactComponent as FaveIcon } from "../../assets/fave_icon.svg";
+
+import BagCartItem from "../../components/bag-cart-item/bag-cart-item.component";
+import BagCartTotal from "../../components/bag-cart-total/bag-cart-total.component";
+
+import { useContext } from "react";
+import { DropdownContext } from "../../contexts/dropdown.context";
+
+// map over the cartItems data and render all cart items to the mybag page
+
+// calculate the total price of all items in cartItems and render on the mybag page
+// set up a state that tracks the total amount in cartItems
+// set up functionality using reduce to find total
+
+// each time use clicks on more or less than icon cartItems quantity will either increase or decrease by 1
+
+// connect the delete 'X' so when clicked the item is removed from cartItems
 
 const Bag = () => {
+  // pull in the states and setter functions from DropdownContext
+  const { cartItems, cartTotal } = useContext(DropdownContext);
+
+  // why was we getting error of undefined reading map after onClick increment?
   return (
     <section className="section-container">
       <div className="my-bag-container">
@@ -11,78 +28,13 @@ const Bag = () => {
           <div className="bag-header">
             <h3 className="heading">MY BAG</h3>
           </div>
-          <div className="item-card">
-            <img
-              src="https://i.ibb.co/ZYW3VTp/brown-brim.png"
-              alt="/"
-              className="item-image"
-            />
-
-            <div className="item-description">
-              <span className="item-description-price">£150.00</span>
-              <span className="item-description-name">
-                Carhartt WIP lined vest in green Carhartt WIP lined vest in
-                green Carhartt WIP lined vest in
-              </span>
-              <span className="item-description-quantity">Qty: 1</span>
-              <Button buttonType="save">
-                <FaveIcon className="favourite-icon" fill="red" />
-                Save for later
-              </Button>
-            </div>
-            <div className="delete-item">X</div>
-          </div>
-          <div className="item-card">
-            <img
-              src="https://i.ibb.co/ypkgK0X/blue-beanie.png"
-              alt="/"
-              className="item-image"
-            />
-
-            <div className="item-description">
-              <span className="item-description-price">£150.00</span>
-              <span className="item-description-name">
-                Carhartt WIP lined vest in green Carhartt WIP lined vest in
-                green Carhartt WIP lined vest in
-              </span>
-              <span className="item-description-quantity">Qty: 1</span>
-              <Button buttonType="save">
-                <FaveIcon className="favourite-icon" fill="red" />
-                Save for later
-              </Button>
-            </div>
-            <div className="delete-item">X</div>
-          </div>
-          <div className="item-card">
-            <img
-              src="https://i.ibb.co/bLB646Z/red-beanie.png"
-              alt="/"
-              className="item-image"
-            />
-
-            <div className="item-description">
-              <span className="item-description-price">£150.00</span>
-              <span className="item-description-name">
-                Carhartt WIP lined vest in green Carhartt WIP lined vest in
-                green Carhartt WIP lined vest in
-              </span>
-              <span className="item-description-quantity">Qty: 1</span>
-              <Button buttonType="save">
-                <FaveIcon className="favourite-icon" fill="red" />
-                Save for later
-              </Button>
-            </div>
-            <div className="delete-item">X</div>
-          </div>
+          
+          {cartItems?.map((cartItem) => (
+            <BagCartItem key={cartItem.id} cartItem={cartItem} />
+          ))}
         </div>
         <div className="bag-total-wrapper">
-          <div className="bag-total-title-container">
-            <h3 className="total-title">TOTAL</h3>
-            <span className="sub-total-title">
-              Subtotal<span className="sub-total-price">£188.00</span>
-            </span>
-          </div>
-          <Button buttonType="checkout">CHECKOUT</Button>
+          <BagCartTotal cartTotal={cartTotal} />
         </div>
       </div>
     </section>
