@@ -28,7 +28,7 @@ const CartDropdownMenu = () => {
       onMouseOut={handleMouseOut}
     >
       <div className="cart-items">
-        {cartItems.map((item) => (
+        {cartItems?.map((item) => (
           <CartItem cartItem={item} key={item.id} />
         ))}
         <Link className="view-bag-link" to="/checkout">

@@ -13,6 +13,7 @@ const BUTTON_TYPES = {
   secondary: "secondary-button",
   save: "save-button",
   counter: "counter-button",
+  delete: "delete-button",
 };
 
 // we can spread otherProps because buttons will container other props like type=submit

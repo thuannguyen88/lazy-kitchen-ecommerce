@@ -123,4 +123,11 @@ $slate-900: rgb(15 23 42);
     padding: 0px 0px;
     font-size: 25px;
   }
+
+  &.delete-button {
+    background-color: $white-color;
+    color: $slate-700;
+    // border-color: $slate-300;
+  
+  }
 }

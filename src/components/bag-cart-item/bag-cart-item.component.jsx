@@ -56,7 +56,9 @@ const BagCartItem = ({ cartItem }) => {
         </Button>
       </div>
       <div className="delete-item">
-        <Button onClick={removeItemFromCart}>X</Button>
+        <Button onClick={removeItemFromCart} buttonType="delete">
+          X
+        </Button>
       </div>
     </div>
   );

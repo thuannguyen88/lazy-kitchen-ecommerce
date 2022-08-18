@@ -156,7 +156,12 @@ $slate-900: rgb(15 23 42);
         }
 
         .delete-item {
-          font-size: 18px;
+          button {
+            width: 35px;
+            padding: 0px 25px;
+            font-size: 18px;
+            font-weight: 100;
+          }
         }
       }
     }

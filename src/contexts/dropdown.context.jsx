@@ -60,6 +60,7 @@ export const DropdownProvider = ({ children }) => {
   useEffect(() => {
     // reduce takes two arguments, first is the callback and the second is the starting value. starting with a value of 0, we will go through each cartItem and check the quantity and add it to the currentTotal
     // why was we getting error of undefined reading reduce after onClick increment?
+
     const totalCartQuantity = cartItems?.reduce(
       (currentTotal, currentCartItem) =>
         currentTotal + currentCartItem.quantity,
@@ -84,6 +85,7 @@ export const DropdownProvider = ({ children }) => {
 
   // a function when a user clicks more or less icon, updates the cartItem quantity
   // returns a new array with updated quantity increase by 1
+  // we generate a new object because when React receives a new object it says prop is different and can re-render ui
   const incrementCartItemQuantity = (cartItems, productToUpdate) => {
     console.log(cartItems, "cart items");
     console.log(productToUpdate, "product to update");
@@ -95,12 +97,28 @@ export const DropdownProvider = ({ children }) => {
     );
   };
 
+  // decrement quantity by 1
+  // if quantity goes to 0, remove item
   const decrementCartItemQuantity = (cartItems, productToUpdate) => {
-    return cartItems.map((cartItem) =>
-      cartItem.id === productToUpdate.id
-        ? { ...cartItem, quantity: cartItem.quantity - 1 }
-        : cartItem
+    // if the cartItem.quantity = 1 then delete cart item
+    // find the cartItem we want to remove
+    const productToRemove = cartItems?.find(
+      (cartItem) => cartItem.id === productToUpdate.id
     );
+
+    if (productToRemove.quantity === 1) {
+      return deleteCartItem(cartItems, productToRemove);
+    }
+
+    console.log(cartItems);
+
+    if (cartItems) {
+      return cartItems.map((cartItem) =>
+        cartItem.id === productToUpdate.id
+          ? { ...cartItem, quantity: cartItem.quantity - 1 }
+          : cartItem
+      );
+    }
   };
 
   // functionality to handle different cases whether to increment or decrement
@@ -128,6 +146,8 @@ export const DropdownProvider = ({ children }) => {
   // functionality to handle removing item from cartItems array
   const removeCartItem = (productToDelete) => {
     setCartItems(deleteCartItem(cartItems, productToDelete));
+
+    console.log(cartItems);
   };
 
   // generate the values to be exported

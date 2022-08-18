@@ -11,10 +11,11 @@ const ProductCard = ({ product }) => {
 
   // destructure of the product what I need
   const { name, price, imageUrl } = product;
+  // console.log(imageUrl);
 
   // when use clicks "add to cart" button, it fires the function to add item to cart
   // for readability and easier to optimise, instead of being nested in jsx, store onClick addItemToCart functionality to a variable
-  const addToCart = () => addItemToCart(product)
+  const addToCart = () => addItemToCart(product);
 
   return (
     <div className="product-card-container">
