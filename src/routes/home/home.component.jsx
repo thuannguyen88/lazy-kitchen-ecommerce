@@ -1,7 +1,10 @@
 import Categories from "../../components/categories/categories.component";
 
+import { useContext } from "react";
+
 const Home = () => {
   // initialise variable array, array that reflects what we have in categories
+  
   const categories = [
     {
       id: 1,

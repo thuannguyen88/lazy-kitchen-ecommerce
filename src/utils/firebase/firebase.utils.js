@@ -10,7 +10,14 @@ import {
   onAuthStateChanged,
 } from "firebase/auth";
 
-import { getFirestore, doc, getDoc, setDoc } from "firebase/firestore";
+import {
+  getFirestore,
+  doc,
+  getDoc,
+  setDoc,
+  collection,
+  writeBatch,
+} from "firebase/firestore";
 
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
@@ -47,6 +54,42 @@ export const signInWithGooglePopUp = () => signInWithPopup(auth, provider);
 
 // points directly to our database
 export const db = getFirestore();
+
+// create a function that takes first parameter is collectionKey i.e. users, and second parameter is json objects
+// calling to an API to store data so it'll be asynchryonous
+// how do we create the collection
+export const addCollectionAndDocuments = async (
+  collectionKey,
+  objectsToAdd
+) => {
+  // passing in our db instance, get the collection within the db, and within this db the collection we are looking for is the collectionKey we're going to pass in
+  // so when we call this function we will give it categories
+  const collectionReference = collection(db, collectionKey);
+
+  // how to store each of these objects into this collectionReference as a new document?
+  // we want to make sure all of our objects we want to add to our collection are successfully added and to do that we need to use a batch
+  // create batch instance
+  const batch = writeBatch(db);
+
+  // for each of these objects i want you to batch set for me
+  // iterate over each object in the array
+  objectsToAdd.forEach((object) => {
+    // use doc method and pass it the collectionReference , pass it the key value of the shop-data which is title
+    // we add an additional batch set call on there creating a new document reference for each of those objects where the key is the title
+    const docRef = doc(collectionReference, object.title.toLowerCase());
+
+    // i want you to batch.set on this docReference, because firebase will give us a document reference even if it doesnt exist yet, it will just point to that place with that specific key, in this case {object.title} inside of our collection
+    // and then for the second parameter, set that value as the object itself, and the value is the object itself
+    batch.set(docRef, object);
+
+  });
+  // this will fire the batch
+  // commits all the writes to the database in this write batch as a single atomic unit
+  await batch.commit();
+  // console.log done so we know 
+  console.log("done");
+
+};
 
 // a method thats an async function that receives a user authentication object
 // in cases where we get additional information, as an object
