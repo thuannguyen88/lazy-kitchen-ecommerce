@@ -26,6 +26,7 @@ const Navigation = () => {
           <LazyKitchenLogo className="logo" />
         </Link>
 
+
         <div className="nav-links-container">
           <Link className="nav-link" to="/shop">
             SHOP

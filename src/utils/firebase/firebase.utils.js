@@ -1,4 +1,5 @@
 // create a seperation between my frontend and the services it relies on
+// set up all these utility functions to minimise the impact changing 3rd party libraries have on our codebase
 
 import {
   getAuth,
@@ -17,6 +18,8 @@ import {
   setDoc,
   collection,
   writeBatch,
+  query,
+  getDocs,
 } from "firebase/firestore";
 
 // Import the functions you need from the SDKs you need
@@ -81,14 +84,35 @@ export const addCollectionAndDocuments = async (
     // i want you to batch.set on this docReference, because firebase will give us a document reference even if it doesnt exist yet, it will just point to that place with that specific key, in this case {object.title} inside of our collection
     // and then for the second parameter, set that value as the object itself, and the value is the object itself
     batch.set(docRef, object);
-
   });
   // this will fire the batch
   // commits all the writes to the database in this write batch as a single atomic unit
   await batch.commit();
-  // console.log done so we know 
+  // console.log done so we know
   console.log("done");
+};
 
+export const getCategoriesandDocuments = async () => {
+  // get the collection reference for categories collection
+  const collectionReference = collection(db, "categories");
+
+  // im going to create a query from this collectionReference that gives you an object
+  const q = query(collectionReference)
+
+  // get a snapshot , executes the query and returns the result as a QuerySnapshot
+  const querySnapshot = await getDocs(q)
+  // const querySnapshot = await getDocs(q);
+   
+  // reduce, the first parameter being the callback, and the second parameter being the object which is an empty object because we're building the instance of it
+  const categoryMap = querySnapshot.docs.reduce((acc, docSnapshot) => {
+    // destructure the title and items from the snapshot of our data
+    const { title, items } = docSnapshot.data();
+    // the title of our accumulater needs to be lowercase because at the moment is uppercase, and that value is going to be equal to items
+    acc[title.toLowerCase()] = items;
+    return acc;
+  }, {});
+
+  return categoryMap;
 };
 
 // a method thats an async function that receives a user authentication object

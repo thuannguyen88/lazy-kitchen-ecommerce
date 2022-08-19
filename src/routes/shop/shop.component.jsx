@@ -1,21 +1,23 @@
-import { useContext } from "react";
+import { Routes, Route } from "react-router-dom";
+
+import CategoriesPreview from "../categories-preview/categories-preview.component";
+import Category from "../category/category.component";
+
 import "./shop.styles.scss";
 
-import { ProductsContext } from "../../contexts/products.context";
+// so for any path /shop/* that follows after i want you to render the shop, because inside the shop you can expect further routes, and these routes are all going to be relative to the parent route which was /shop
 
-import ProductCard from "../../components/product-card/product-card.component";
+// whatever was render inside the parameters will be dealth with inside of this route
 
+// set up an index path
+
+// set up a Route path which is a unique string with object key "category" and value whatever is typed after /shop/:category
 const Shop = () => {
-  // get the products context
-  const { products } = useContext(ProductsContext);
   return (
-    <div className="products-container">
-      {products.map((product) => (
-        // the reason why we want key is because we need to provide id for our map
-        // pass product as a prop into product card
-        <ProductCard key={product.id} product={product} />
-      ))}
-    </div>
+    <Routes>
+      <Route index element={<CategoriesPreview />} />
+      <Route path=":category" element={<Category />} />
+    </Routes>
   );
 };
 

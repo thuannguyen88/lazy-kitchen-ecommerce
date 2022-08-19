@@ -1,4 +1,4 @@
-import Categories from "../../components/categories/categories.component";
+import Categories from "../../components/landing-page-categories/landing-page-categories.component";
 
 import { useContext } from "react";
 
